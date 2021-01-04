@@ -1,0 +1,6 @@
+Flask==1.1.1
+Flask-SocketIO==5.0.1
+mtcnn==0.1.0
+requests==2.25.1
+opencv-python==4.1.0.25
+tensorflow==2.4.0
