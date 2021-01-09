@@ -55,91 +55,21 @@
                 var table = "";
                 for (i in msg) {
                     index = msg[i]
-                    table_name = '<table><tr><td><img src="./static/3024605.png" width="35" height="35"></td><td><b>' + index.name + '</b></td></tr></table>'
-                    table_mssv = '<table><tr><td><img src="./static/id.png" width="35" height="35"></td><td><b>' + index.mssv + '</b></td></tr></table>'
-                    table = table + '<div class="row justify-content-md-center">' + table_name + table_mssv + '</div>';
-                    // $("#show_face").html(index.face_crop)    
-                    // console.log(index.face_crop)
-                    // $("#show_face").attr("src","data:image/png;base64,"+index.face_crop);
+                    console.log()
+                    // table_name = '<table><tr><td><img src="./static/3024605.png" width="35" height="35"></td><td><b>' + index.name + '</b></td></tr></table>'
+                    table_name = '<table><tr><td rowspan="2"><img src="data:image/png;base64,'+ index.face_crop +'"'+'width="120" height="120"></td><td><b>' + index.name + '</b></td></tr><tr><td id="mssv"><b>'+index.mssv+'</b></td></tr></table>'
+                    
+                    // table_mssv = '<table><tr><td><img src="./static/id.png" width="35" height="35"></td><td><b>' + index.mssv + '</b></td></tr></table>'
+                    table = table + '<div class="row justify-content-md-center">' + table_name+ '</div>';
                     // $('<div class="row justify-content-md-center">' + table_name + table_mssv + '</div>').appendTo("#show_info").fadeOut(5000,'swing')
                 }
                 $("#show_info").html(table)
-
-                // socket.emit('message', msg)
-                // $.notify("Chúc mừng "+ msg.name +" đã điểm danh thành công", successOptions);
-                // setInterval('refreshPage()', 2000);
-                // $.notify("Xin chào " + msg.name, 
-                // {
-                //     type: 'info',
-                //     animate: {
-                //         enter: 'animated fadeInUp',
-                //         exit: 'animated fadeOutRight'
-                //     },
-                //     className: "success",
-                //     placement: {
-                //         from: "bottom",
-                //         align: "left"
-                //     },
-                //     offset: 20,
-                //     spacing: 10,
-                //     z_index: 1031,
-                // });
             });
 
-            // $("button").on('click', function () {
-            //     console.log("Da click")
-            //     $.notify("Success message!", successOptions);
-
-            // });
-            // $("button").click(function () {
-            //     socket.emit("message", "OK")
-            //     return flase;
-            // });
-            // var ping_pong_times = [];
-            // var start_time;
-            // window.setInterval(function() {
-            //     start_time = (new Date).getTime();
-            //     socket.emit('my_ping');
-            // }, 1000);
-            // socket.on('my_pong', function() {
-            //     var latency = (new Date).getTime() - start_time;
-            //     ping_pong_times.push(latency);
-            //     ping_pong_times = ping_pong_times.slice(-30); // keep last 30 samples
-            //     var sum = 0;
-            //     for (var i = 0; i < ping_pong_times.length; i++)
-            //         sum += ping_pong_times[i];
-            //     $('#name').text(Math.round(10 * sum / ping_pong_times.length) / 10);
-            // });
-            // socket.on('connect', function () {
-            //     // socket.send('User has connected!');
-            //     console.log("Connected")
-            //     socket.emit('message', 'User has connected!')
-            // });
-            // console.log("Ready1")
-            // socket.on('my respone', function (msg) {
-            //     console.log("Received message", msg)
-            //     $("#name").html(msg);
-            // });
-
-
-            // break;
+            
         });
     </script>
-    <!-- <script>
-        // console.log('/')
-        $(document).ready(function () {
-            $.ajax({
-                url: "/info",
-                type: "GET",
-                // data: {text:data},
-                success: function (data) {
-                    console.log(data)
-                    $("#name").html(data);
-                }
-            });
-        });
-    </script> -->
-    <!-- Background -->
+
     <style>
         body {
             /* background: #7f7fd5;
@@ -167,12 +97,7 @@
                 <!-- <img src="./face_test.png "> -->
                 <img src="{{ url_for('video_feed') }}">
             </div>
-            <!-- Tạo 1 hàng -->
-            <!-- <div style="text-align: center;">
-                <div class="border">
-                    <img src="./face_test.png ">
-                </div>
-            </div> -->
+            <div class="col" id="show_info"></div>
         </div>
         <div class="row justify-content-md-center">
             <!-- <table> -->
@@ -198,17 +123,8 @@
                 </div> -->
             <!-- </div> -->
         </div>
-        <div class="container" id="show_info">
-        </div>
+        
         <div class="row justify-content-md-center">
-            <img id="show_face">
-            <!-- <div class="col-md-6 col-sm-6 col-xs-6">
-                <a class="btn btn-sm animated-button victoria-one">Color recognition</a>
-            </div> -->
-            <!-- <div class="col-4-5"> -->
-            <!-- <div class="card">
-                    <h6 class="type">TAKE PICTURE</h6>
-                </div> -->
             <button id="xn" class="button" style="vertical-align:middle" onClick="window.location.reload();"><span>XÁC
                     NHẬN</span></button>
             <!-- </div> -->
