@@ -1,0 +1,144 @@
+<html lang="en">
+
+<head>
+    <title>Diem danh demo</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="style.less" type="text/less">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- icon -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+        integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <!-- Botstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="./static/button.css">
+    <!-- Notify -->
+    <link rel="stylesheet" href="./static/bs4.pop.css">
+    <script src="./static/bs4.pop.js"></script>
+    <script src="https://rawgit.com/notifyjs/notifyjs/master/dist/notify.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-notify/0.2.0/js/bootstrap-notify.min.js"></script> -->
+
+
+    <!-- <script>src="https://cdnjs.cloudflare.com/ajax/libs/mouse0270-bootstrap-notify/3.1.5/bootstrap-notify.min.js"</script> -->
+    <!-- <link rel="stylesheet" href="./static/bs4.pop.css">
+    <script src="./static/bs4.pop.js"></script> -->
+
+    <!-- Socket -->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/3.0.4/socket.io.js"></script>
+    <!-- <script src="./static/socket.js"></script> -->
+    <script type="text/javascript">
+        function b64(e){var t="";var n=new Uint8Array(e);var r=n.byteLength;for(var i=0;i<r;i++){t+=String.fromCharCode(n[i])}return window.btoa(t)}
+
+        $(document).ready(function () {
+            // var socket = io.connect('http://127.0.0.1:5000');
+            var successOptions = {
+                autoHideDelay: 20000,
+                showAnimation: "fadeIn",
+                hideAnimation: "fadeOut",
+                hideDuration: 700,
+                arrowShow: false,
+                className: "success",
+            };
+            var socket = io.connect('http://' + document.domain + ':' + location.port + '/info');
+            socket.on('connect', function () {
+                socket.emit('my_event', 'User has connected!');
+            });
+            socket.on('my_response', function (msg) {
+                // $("#name").append('<li>' + msg + '</li>');
+                $("#name").html('<b>' + msg.name + '</b>');
+                $("#mssv").html('<b>' + msg.mssv + '</b>');
+                // console.log(typeof msg);
+                var table_name = "";
+                var table_mssv = "";
+                var table = "";
+                for (i in msg) {
+                    index = msg[i]
+                    console.log()
+                    // table_name = '<table><tr><td><img src="./static/3024605.png" width="35" height="35"></td><td><b>' + index.name + '</b></td></tr></table>'
+                    table_name = '<table><tr><td rowspan="2"><img src="data:image/png;base64,'+ index.face_crop +'"'+'width="120" height="120"></td><td><b>' + index.name + '</b></td></tr><tr><td id="mssv"><b>'+index.mssv+'</b></td></tr></table>'
+                    
+                    // table_mssv = '<table><tr><td><img src="./static/id.png" width="35" height="35"></td><td><b>' + index.mssv + '</b></td></tr></table>'
+                    table = table + '<div class="row justify-content-md-center">' + table_name+ '</div>';
+                    // $('<div class="row justify-content-md-center">' + table_name + table_mssv + '</div>').appendTo("#show_info").fadeOut(5000,'swing')
+                }
+                $("#show_info").html(table)
+            });
+
+            
+        });
+    </script>
+
+    <style>
+        body {
+            /* background: #7f7fd5;
+            background: linear-gradient(to left, #91eae4, #86a8e7, #7f7fd5); */
+            background-color: rgb(43, 38, 38);
+            max-width: 100%;
+            max-height: 10%;
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- <h1 style="text-align:center;">
+        ĐIỂM DANH UIT
+    </h1> -->
+    <div class="jumbotron text-center" style="background-color: rgb(107, 125, 184);max-width: height 2px;">
+        <div class="container">
+            <h1>WEBSITE ĐIỂM DANH</h1>
+        </div>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="border">
+                <!-- <img src="./face_test.png "> -->
+                <img src="{{ url_for('video_feed') }}">
+            </div>
+            <div class="col" id="show_info"></div>
+        </div>
+        <div class="row justify-content-md-center">
+            <!-- <table> -->
+                <!-- <tbody> -->
+                <!-- <tr> -->
+                    <!-- <td style="height:50px;width:50px;"><img src="person_dilam.jpg" width="24" height="24"></td> -->
+                    <!-- <td><img src="./static/3024605.png" width="35" height="35"></td> -->
+                    <!-- <font face="Comic sans MS" size="5">Comic Sans MS</font><br />     -->
+                    <!-- <td id="name"><b>Unkown</b></td> -->
+                <!-- </tr> -->
+            <!-- </table> -->
+            <!-- <table> -->
+                <!-- <tr> -->
+                    <!-- <td><img src="./static/id.png" width="35" height="35"></td> -->
+                    <!-- <td id="mssv"><b>Unkown</b></td> -->
+                <!-- </tr> -->
+            <!-- </table> -->
+            <!-- </div> -->
+            <!-- <div class="flex-lg-row-reverse">
+                    <div class="box">
+                        <span><b>CHÚC MỪNG BẠN ĐÃ ĐIỂM DANH THÀNH CÔNG</b></span>
+                    </div> 
+                </div> -->
+            <!-- </div> -->
+        </div>
+        
+        <div class="row justify-content-md-center">
+            <button id="xn" class="button" style="vertical-align:middle" onClick="window.location.reload();"><span>XÁC
+                    NHẬN</span></button>
+            <!-- </div> -->
+            <!-- <div class="col"> -->
+            <!-- <div class="card">
+                    <h6 class="type">INFOMATION</h6>
+                </div> -->
+            <button class="button"
+                style="vertical-align:middle;background-color: rgb(250, 250, 250);color: rgb(37, 36, 36);"><span>ĐĂNG
+                    KÍ</span></button>
+            <!-- </div> -->
+
+        </div>
+    </div>
+</body>
+
+</html>

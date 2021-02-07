@@ -1,0 +1,104 @@
+
+@import url(https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css);
+@import url(https://fonts.googleapis.com/css?family=Comfortaa);
+
+/* body {
+  font-family: 'Comfortaa', cursive;
+  background: #353535;
+  color: #FFF;
+} */
+.button {
+  display: inline-block;
+  border-radius: 10px;
+  background-color: #f4511e;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 25px;
+  padding: 10px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+.crop {
+  width: 200px;
+  height: 150px;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.border {
+  /* width: 95%;
+  height: 95%; */
+  margin: auto;
+  width: auto;
+  display: block;
+  border-radius: 30px;
+  overflow: hidden;
+  text-align: center;
+}
+
+
+table {
+  background: #7f7fd5;
+  background: linear-gradient(to left, #91eae4, #86a8e7, #7f7fd5);
+  width:auto;
+  border: none;
+  border-spacing: 5rem;
+  border-radius: 1rem;
+  overflow: hidden;
+  border-collapse: collapse;
+  /* border-spacing: 50px 0; */
+  /* border-collapse: separate; */
+  /* border-color: white; */
+}
+
+td,
+th {
+  border: 2px solid #999;
+  /* border: none; */
+  padding: 2rem;
+  text-align: center;
+  /* padding: 10px 0; */
+}
+
+.box {
+  background: #7f7fd5;
+  background: linear-gradient(to left, #91eae4, #86a8e7, #7f7fd5);
+  border: 1px solid;
+  width: 100%;
+  padding: 40px;
+  border-radius: 10px;
+  /* box-shadow: 5px 10px 18px #888888; */
+}
+b {
+  font-size: 130%;
+  font-family: 'Comfortaa', cursive;
+}
