@@ -15,6 +15,7 @@ sudo apt install libcaffe-cpu-dev
 make
 sudo make install
 ```
+### Run source
 ```Shell
 python3 app.py
 ```
