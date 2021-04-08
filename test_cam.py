@@ -9,7 +9,7 @@ from multiprocessing import Queue
 import threading
 
 def get_token():
-    url = 'http://service.mmlab.uit.edu.vn/checkinService_demo/user_login/post/'
+    url = ''
     #url = 'http://192.168.28.73:81/user_login/post/'
     # ------------------------------------
     data = {'user_name': 'tester1', 'password': 'tester1'}
@@ -22,7 +22,7 @@ def get_token():
     token = response['token']
     return token
 
-url = 'http://service.mmlab.uit.edu.vn/checkinService_demo/search_face/post/'
+url = ''
 ####################################
 
 cascPath = 'haarcascade_frontalface_dataset.xml'  # dataset
